@@ -33,5 +33,39 @@ template <class T>
 void sorter(std::vector<T> &items, std::size_t k) {  
 	using namespace std;
 	// write your solution for k-way merge sort below	
+	
+	//-----Determine the number of sub-vectors that need to be made-----
+	int extraElements = items.size() % k; // Determine how many subarrays need an extra value
+	int subvectorSize = items.size() / k; // Determine the subvector's size
+
+	// Create a vector of vectors that holds k empty vectors
+	std::vector<std::vector<T>> subvectors(k);
+	
+	//Create subvectors with extra value if needed
+	if (extraElements != 0){
+		//Incremental value to track how many vectors have been resized
+		int numVectors = 1;
+		for (int i = 0; numVectors <= extraElements; i++){
+			// Resize the vectors
+			subvectors[i].resize(subvectorSize+1);
+			numVectors++
+		}
+		//resize the last vector to size k
+		subvectors[k-1].resize(subvectorSize);
+	}
+	else{ // Else, resize the vectors to have the regular subvector size
+		for (int i = 0; i < k; i++){
+			subvectors[i].resize(subvectorSize);
+		}
+	}
+
+	//-----Copy corresponding parts of A into the smaller vectors-----
+
+	//-----For loop that recursively calls the sorter() function-----
+
+	//-----Merge returned vectors back together-----
+
+	//-----Return the sorted array-----
+	return; 
 }
 #endif
