@@ -48,14 +48,14 @@ void sorter(std::vector<T> &items, std::size_t k) {
 	//Create subvectors with extra value if needed
 	if (extraElements != 0){
 		//Incremental value to track how many vectors have been resized
-		int numVectors = 1;
-		for (int i = 0; numVectors <= extraElements; i++){
+		int numVectors = 0;
+		for (int i = 0; numVectors < extraElements; i++){
 			// Resize the vectors
 			subvectors[i].resize(subvectorSize+1);
 			numVectors++
 		}
 		//resize the last vector to size k
-		subvectors[k-1].resize(subvectorSize);
+		subvectors[numVectors].resize(subvectorSize);
 	}
 	else{ // Else, resize the vectors to have the regular subvector size
 		for (int i = 0; i < k; i++){
