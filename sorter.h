@@ -33,6 +33,10 @@ template <class T>
 void sorter(std::vector<T> &items, std::size_t k) {  
 	using namespace std;
 	// write your solution for k-way merge sort below	
+
+	//-----Base Case-----
+	// If size of input array is 1, it is already sorted. If the size is zero, it is empty and shouldn't be considered
+	if (items.size() <= 1) return;
 	
 	//-----Determine the number of sub-vectors that need to be made-----
 	int extraElements = items.size() % k; // Determine how many subarrays need an extra value
@@ -62,6 +66,10 @@ void sorter(std::vector<T> &items, std::size_t k) {
 	//-----Copy corresponding parts of A into the smaller vectors-----
 
 	//-----For loop that recursively calls the sorter() function-----
+	for (int i = 0; i < k; i++){
+		// Iterate through the vector of vectors and perform a recursive call for each subvector
+		sorter(subvectors[i], k);
+	}
 
 	//-----Merge returned vectors back together-----
 
